@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Мебель на заказ — Частный мастер</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --sand: #e8dfc9;
+    --brown-dark: #3b2a1a;
+    --brown-mid: #6b4c2a;
+    --brown-light: #a07850;
+    --green: #5a7a5a;
+    --green-light: #7da87d;
+    --green-pale: #c8d8c0;
+    --green-bg: #d4e0cc;
+    --white: #fefcf8;
+    --text: #2d1f10;
+    --text-muted: #6b5a45;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--green-bg);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAVBAR */
+  .navbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(160, 120, 80, 0.15);
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--brown-dark);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-btn:hover { background: var(--green-light); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 60px 60px;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(125, 168, 125, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: var(--green-pale);
+    color: var(--green);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--brown-dark);
+    margin-bottom: 16px;
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 380px;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brown-mid);
+    color: white;
+    padding: 13px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(107, 76, 42, 0.3);
+  }
+  .btn-primary:hover { background: var(--brown-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(107, 76, 42, 0.4); }
+
+  .btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--green);
+    color: white;
+    padding: 13px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { background: var(--green-light); transform: translateY(-2px); }
+
+  .hero-image {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(59, 42, 26, 0.2);
+    aspect-ratio: 4/3;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #c9a87a 0%, #8b6340 40%, #5a3e22 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    min-height: 360px;
+  }
+
+  /* SECTION WRAPPER */
+  section { padding: 80px 60px; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--brown-dark);
+    text-align: center;
+    margin-bottom: 48px;
+    font-weight: 600;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--white);
+    border-radius: 32px;
+    margin: 0 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .about-img {
+    width: 220px;
+    height: 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 12px 40px rgba(59, 42, 26, 0.18);
+    flex-shrink: 0;
+  }
+
+  .about-img-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #b8865a 0%, #7a4f2c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+  }
+
+  .about h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--brown-dark);
+    margin-bottom: 16px;
+  }
+
+  .about p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .about-checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+    list-style: none;
+  }
+
+  .about-checklist li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .check-icon {
+    width: 18px; height: 18px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 10px;
+  }
+
+  /* SERVICES */
+  .services { background: var(--sand); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  .service-card {
+    background: var(--cream);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(59, 42, 26, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+  }
+
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(59, 42, 26, 0.16); }
+
+  .service-img {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #c9a87a, #7a5030);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+  }
+
+  .service-label {
+    padding: 10px 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--brown-dark);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .service-dot {
+    width: 8px; height: 8px;
+    border-radius: 2px;
+    background: var(--brown-mid);
+    flex-shrink: 0;
+  }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--cream); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+  }
+
+  .portfolio-item {
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .portfolio-item:first-child { grid-row: 1 / 3; }
+
+  .portfolio-thumb {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, #c9a87a 0%, #6b4428 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    transition: transform 0.3s;
+  }
+  .portfolio-item:first-child .portfolio-thumb { aspect-ratio: 3/4; }
+  .portfolio-item:hover .portfolio-thumb { transform: scale(1.04); }
+
+  .portfolio-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 8px 12px;
+    background: rgba(59, 42, 26, 0.75);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 500;
+    backdrop-filter: blur(4px);
+  }
+
+  /* HOW IT WORKS */
+  .process { background: var(--white); border-radius: 32px; margin: 0 20px; }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .step-card {
+    border-radius: 20px;
+    padding: 24px;
+    position: relative;
+    transition: transform 0.2s;
+  }
+  .step-card:hover { transform: translateY(-4px); }
+
+  .step-card:nth-child(1) { background: var(--brown-dark); color: white; }
+  .step-card:nth-child(2) { background: var(--brown-mid); color: white; }
+  .step-card:nth-child(3) { background: var(--green); color: white; }
+  .step-card:nth-child(4) { background: var(--green-light); color: white; }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    opacity: 0.9;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .step-icon { font-size: 1.5rem; margin-bottom: 12px; }
+
+  .step-text {
+    font-size: 0.82rem;
+    line-height: 1.6;
+    opacity: 0.92;
+    font-weight: 400;
+  }
+
+  /* REVIEWS */
+  .reviews { background: var(--sand); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .review-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(59, 42, 26, 0.07);
+    transition: transform 0.2s;
+  }
+  .review-card:hover { transform: translateY(-4px); }
+
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .review-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #c9a87a, #5a3a20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .review-name { font-size: 0.85rem; font-weight: 600; color: var(--brown-dark); }
+  .review-date { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+
+  .review-stars { color: #e8a820; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 10px; }
+
+  .review-text {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+  }
+
+  /* CONTACTS */
+  .contacts {
+    background: var(--brown-dark);
+    color: white;
+    border-radius: 32px;
+    margin: 0 20px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+    padding: 56px 60px;
+  }
+
+  .contacts h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin-bottom: 32px;
+    color: var(--sand);
+  }
+
+  .contact-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 40px;
+  }
+
+  .contact-item { display: flex; align-items: flex-start; gap: 12px; }
+  .contact-icon { font-size: 1.2rem; margin-top: 2px; }
+  .contact-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-bottom: 3px; letter-spacing: 0.5px; text-transform: uppercase; }
+  .contact-value { font-size: 0.9rem; color: var(--sand); font-weight: 500; }
+
+  .messengers { display: flex; gap: 12px; margin-top: 4px; }
+
+  .messenger-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    text-decoration: none;
+  }
+  .messenger-btn:hover { transform: scale(1.15); }
+  .msg-viber { background: #7360f2; }
+  .msg-telegram { background: #2aabee; }
+  .msg-whatsapp { background: #25d366; }
+
+  .map-placeholder {
+    width: 240px; height: 180px;
+    background: linear-gradient(135deg, #3d5a3d 0%, #2a3d2a 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .map-placeholder::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(255,255,255,0.03) 20px,
+      rgba(255,255,255,0.03) 40px
+    );
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+    .hero-image { display: none; }
+    section { padding: 60px 20px; }
+    .about { grid-template-columns: 1fr; margin: 0 10px; padding: 32px; }
+    .about-img { width: 100%; height: 200px; }
+    .services-grid { grid-template-columns: repeat(3, 1fr); }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .portfolio-item:first-child { grid-row: auto; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .contacts { grid-template-columns: 1fr; margin: 0 10px; padding: 36px 24px; }
+    .contact-info { grid-template-columns: 1fr; }
+    .map-placeholder { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">Мебель на заказ</div>
+  <a href="tel:+19772234963" class="nav-btn">
+    <span>📞</span> Позвонить
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Частный мастер · 15+ лет опыта</span>
+    <h1>Изготавливаю кухни и мебель на заказ.</h1>
+    <p class="hero-sub">Без посредников. Без переплат.<br>Только честная работа и нормальные сроки.</p>
+    <div class="hero-btns">
+      <a href="tel:+19772234963" class="btn-primary">
+        <span>📞</span> Позвонить
+      </a>
+      <a href="https://t.me/master" class="btn-secondary">
+        <span>💬</span> Написать в Viber / Telegram
+      </a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-img-placeholder">🪵</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section style="background: var(--green-bg); padding: 60px 40px;">
+  <div class="about fade-in">
+    <div class="about-img">
+      <div class="about-img-placeholder">🔨</div>
+    </div>
+    <div>
+      <h2>О мастере</h2>
+      <p>Работаю более 15 лет. Делаю кухни, шкафы, гардеробные, прихожие.<br>
+      Замер, проект, изготовление и установка — всё делаю лично.</p>
+      <ul class="about-checklist">
+        <li><span class="check-icon">✓</span> Работаю без посредников</li>
+        <li><span class="check-icon">✓</span> Адекватные сроки</li>
+        <li><span class="check-icon">✓</span> Помогаю с выбором материалов</li>
+        <li><span class="check-icon">✓</span> Чисто после установки</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services fade-in">
+  <h2 class="section-title">Что делаю</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-img" style="background: linear-gradient(135deg, #c9a87a, #6b3a18);">🍳</div>
+      <div class="service-label"><span class="service-dot"></span> Кухни</div>
+    </div>
+    <div class="service-card">
+      <div class="service-img" style="background: linear-gradient(135deg, #8aad8a, #3a5a3a);">🚪</div>
+      <div class="service-label"><span class="service-dot" style="background: var(--green)"></span> Шкафы-купе</div>
+    </div>
+    <div class="service-card">
+      <div class="service-img" style="background: linear-gradient(135deg, #b89a6a, #4a3020);">👔</div>
+      <div class="service-label"><span class="service-dot"></span> Гардеробные</div>
+    </div>
+    <div class="service-card">
+      <div class="service-img" style="background: linear-gradient(135deg, #a0c0a0, #4a6a4a);">🪑</div>
+      <div class="service-label"><span class="service-dot" style="background: var(--green)"></span> Тумбы и комоды</div>
+    </div>
+    <div class="service-card">
+      <div class="service-img" style="background: linear-gradient(135deg, #d4b080, #7a5030);">🌿</div>
+      <div class="service-label"><span class="service-dot"></span> Мебель для балкона</div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio fade-in" style="background: var(--green-bg);">
+  <h2 class="section-title">Примеры работ</h2>
+  <div class="portfolio-grid">
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="aspect-ratio: unset; height: 100%; min-height: 300px; background: linear-gradient(160deg, #c9a87a 0%, #5a3318 100%);">🪵</div>
+      <div class="portfolio-caption">Кухня из массива дерева</div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="background: linear-gradient(135deg, #8aad8a, #3a5a3a);">🚪</div>
+      <div class="portfolio-caption">Шкаф-купе</div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="background: linear-gradient(135deg, #b89a6a, #4a3020);">👗</div>
+      <div class="portfolio-caption">Гардеробная</div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="background: linear-gradient(135deg, #a0c0a0, #4a6a4a);">🪞</div>
+      <div class="portfolio-caption">Шкафы-кухни гардеробные</div>
+    </div>
+    <div class="portfolio-item">
+      <div class="portfolio-thumb" style="background: linear-gradient(135deg, #d4b080, #6a4020);">🏠</div>
+      <div class="portfolio-caption">Мебель для балкона</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section style="background: var(--sand); padding: 60px 40px;">
+  <h2 class="section-title">Как проходит работа</h2>
+  <div class="process fade-in" style="padding: 40px;">
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-icon">📞</div>
+        <div class="step-text">Позвоните или напишите — обсудим вашу мебель</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-icon">📐</div>
+        <div class="step-text">Приезжаю на замер, создаём совместный проект</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-icon">🔧</div>
+        <div class="step-text">Изготавливаю сам, держу вас в курсе деталей</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-icon">🎉</div>
+        <div class="step-text">Приезжаю, монтирую, убираю. Работа завершена!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews fade-in">
+  <h2 class="section-title">Отзывы</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar">👩</div>
+        <div>
+          <div class="review-name">Анна К.</div>
+          <div class="review-date">15 января 2025</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Заказывала кухню — очень довольна! Мастер всё сделал сам, без перекладывания ответственности. Чисто, аккуратно, в срок. Буду рекомендовать всем знакомым.</p>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background: linear-gradient(135deg, #6a9a6a, #2a5a2a);">👨</div>
+        <div>
+          <div class="review-name">Сергей М.</div>
+          <div class="review-date">3 марта 2025</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Сделали гардеробную в спальню. Учли все наши пожелания, подсказали по материалам. Качество отличное, цена адекватная. Уже второй раз обращаемся.</p>
+    </div>
+    <div class="review-card">
+      <div class="review-header">
+        <div class="review-avatar" style="background: linear-gradient(135deg, #9a7a5a, #5a3a20);">👩</div>
+        <div>
+          <div class="review-name">Наталья В.</div>
+          <div class="review-date">28 апреля 2025</div>
+        </div>
+      </div>
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">Очень понравилась работа. Шкаф-купе стоит уже полгода — всё держится идеально. Мастер приятный в общении, объяснил всё по процессу. Рекомендую!</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section style="background: var(--green-bg); padding: 60px 40px;">
+  <div class="contacts fade-in">
+    <div>
+      <h2>Контакты</h2>
+      <div class="contact-info">
+        <div class="contact-item">
+          <span class="contact-icon">📍</span>
+          <div>
+            <div class="contact-label">Город</div>
+            <div class="contact-value">Город</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">⏰</span>
+          <div>
+            <div class="contact-label">Часы работы</div>
+            <div class="contact-value">12:00 – 19:00</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">📞</span>
+          <div>
+            <div class="contact-label">Телефон</div>
+            <div class="contact-value">(1977) 223-49-63</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">💬</span>
+          <div>
+            <div class="contact-label">Мессенджеры</div>
+            <div class="messengers">
+              <a href="#" class="messenger-btn msg-whatsapp">💬</a>
+              <a href="#" class="messenger-btn msg-telegram">✈️</a>
+              <a href="#" class="messenger-btn msg-viber">📱</a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">✉️</span>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">Messenger@s.ru</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="map-placeholder">🗺️</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Мебель на заказ · Частный мастер · Все права защищены</p>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
