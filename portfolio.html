@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфоліо — Меблі на замовлення</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="portfolio-page">
+
+<nav class="navbar">
+  <a href="index.html" class="logo">Меблі на замовлення</a>
+  <div class="nav-links">
+    <a href="index.html#about">Про майстра</a>
+    <a href="index.html#services">Послуги</a>
+    <a href="portfolio.html" class="active-link">Портфоліо</a>
+    <a href="index.html#contacts">Контакти</a>
+  </div>
+  <a href="tel:+19772234963" class="nav-btn">
+    <i class="fa-solid fa-phone"></i> Зателефонувати
+  </a>
+</nav>
+
+<header class="page-header">
+  <h1>Мої роботи</h1>
+  <p>Ознайомтеся з прикладами реалізованих проєктів. Виберіть категорію, щоб переглянути фотографії конкретних меблів.</p>
+</header>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">Всі роботи</button>
+  <button class="filter-btn" data-filter="kitchen">Кухні</button>
+  <button class="filter-btn" data-filter="wardrobe">Шафи-купе</button>
+  <button class="filter-btn" data-filter="closet">Гардеробні</button>
+  <button class="filter-btn" data-filter="other">Інше</button>
+</div>
+
+<section class="gallery">
+  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
+    <img src="image/kitchen1.jpg" alt="Кухня" class="portfolio-thumb">
+    <div class="portfolio-caption">Кухня з масиву дерева</div>
+  </div>
+  
+  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
+    <img src="image/kitchen2.jpg" alt="Кухня" class="portfolio-thumb">
+    <div class="portfolio-caption">Сучасна світла кухня</div>
+  </div>
+  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
+    <img src="image/kitchen3.jpg" alt="Кухня" class="portfolio-thumb">
+    <div class="portfolio-caption">Сучасна світла кухня</div>
+  </div>
+  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
+    <img src="image/kitchen4.png" alt="Кухня" class="portfolio-thumb">
+    <div class="portfolio-caption">Сучасна світла кухня</div>
+  </div>
+
+  <div class="portfolio-item" data-category="wardrobe" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=600&q=80" alt="Шафа" class="portfolio-thumb">
+    <div class="portfolio-caption">Дзеркальна шафа-купе</div>
+  </div>
+
+  <div class="portfolio-item" data-category="closet" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=600&q=80" alt="Гардеробна" class="portfolio-thumb">
+    <div class="portfolio-caption">Функціональна гардеробна</div>
+  </div>
+
+  <div class="portfolio-item" data-category="other" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80" alt="Комод" class="portfolio-thumb">
+    <div class="portfolio-caption">Стильні тумби та комоди</div>
+  </div>
+
+  <div class="portfolio-item" data-category="other" onclick="openLightbox(this)">
+    <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Балкон" class="portfolio-thumb">
+    <div class="portfolio-caption">Облаштування балкону</div>
+  </div>
+</section>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <span class="lightbox-close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img" src="" alt="Перегляд">
+</div>
+
+<footer>
+  <p>© 2025 Корпусні меблі на замовлення · Приватний майстер · Всі права захищені</p>
+</footer>
+
+<script>
+  // Логіка фільтрації
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Видаляємо клас active у всіх кнопок
+      filterBtns.forEach(button => button.classList.remove('active'));
+      // Додаємо клас active натиснутій кнопці
+      btn.classList.add('active');
+
+      const filterValue = btn.getAttribute('data-filter');
+
+      portfolioItems.forEach(item => {
+        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+          item.classList.remove('hide');
+        } else {
+          item.classList.add('hide');
+        }
+      });
+    });
+  });
+
+  // Логіка Lightbox (галереї)
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  function openLightbox(element) {
+    const imgSrc = element.querySelector('img').src;
+    lightboxImg.src = imgSrc;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden'; 
+  }
+
+  function closeLightbox(event) {
+    if (event.target === lightbox || event.target.className === 'lightbox-close') {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = ''; 
+    }
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape" && lightbox.classList.contains('active')) {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
+</body>
+</html>
