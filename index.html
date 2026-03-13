@@ -6,6 +6,7 @@
 <title>Меблі на замовлення — Приватний майстер</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +19,7 @@
     <a href="portfolio.html">Портфоліо</a>
     <a href="#contacts">Контакти</a>
   </div>
-  <a href="tel:+19772234963" class="nav-btn">
+  <a href="tel:" class="nav-btn">
     <i class="fa-solid fa-phone"></i> Зателефонувати
   </a>
 </nav>
@@ -28,10 +29,10 @@
     <h1>Виготовлення кухонь та корпусних меблів на замовлення.</h1>
     <p class="hero-sub">Працюю без посередників та прихованих платежів. Гарантую високу якість, прозоре ціноутворення та чітке дотримання термінів.</p>
     <div class="hero-btns">
-      <a href="tel:+19772234963" class="btn-primary">
+      <a href="tel:" class="btn-primary">
         <i class="fa-solid fa-phone"></i> Зателефонувати
       </a>
-      <a href="https://t.me/master" class="btn-secondary">
+      <a href="https://t.me/DarkCold20" class="btn-secondary">
         <i class="fa-brands fa-telegram"></i> Написати в Telegram
       </a>
     </div>
@@ -90,10 +91,10 @@
   <div class="portfolio-grid">
     <div class="portfolio-item" onclick="openLightbox(this)">
       <img src="image/kitchen3.jpg" alt="Кухня з масиву дерева" class="portfolio-thumb">
-      <div class="portfolio-caption">Ергономічна кухня з масиву дерева</div>
+      <div class="portfolio-caption">Світла мінімалістична кухня</div>
     </div>
     <div class="portfolio-item" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=600&q=80" alt="Сучасна шафа-купе" class="portfolio-thumb">
+      <img src="image/wardrobe2.jpg" alt="Сучасна шафа-купе" class="portfolio-thumb">
       <div class="portfolio-caption">Сучасна шафа-купе</div>
     </div>
     <div class="portfolio-item" onclick="openLightbox(this)">
@@ -101,12 +102,12 @@
       <div class="portfolio-caption">Функціональна гардеробна</div>
     </div>
     <div class="portfolio-item" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=600&q=80" alt="Комод" class="portfolio-thumb">
-      <div class="portfolio-caption">Стильні тумби та комоди</div>
+      <img src="image/other1.jpg" alt="Комод" class="portfolio-thumb">
+      <div class="portfolio-caption">Мінімалістична підвісна тумба під телевізор із нижньою підсвіткою</div>
     </div>
     <div class="portfolio-item" onclick="openLightbox(this)">
-      <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80" alt="Балкон" class="portfolio-thumb">
-      <div class="portfolio-caption">Облаштування простору балкону</div>
+      <img src="image/other2.jpg" alt="Балкон" class="portfolio-thumb">
+      <div class="portfolio-caption">Підвісна тумба у ванну з фактурою дерева та заокругленим фасадом</div>
     </div>
   </div>
   </div> <div style="text-align: center; margin-top: 40px;">
@@ -153,46 +154,89 @@
 
 <section class="reviews fade-in">
   <h2 class="section-title">Відгуки клієнтів</h2>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-header">
-        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Анна" class="review-avatar">
-        <div>
-          <div class="review-name">Анна К.</div>
-          <div class="review-date">15 січня 2025</div>
+  
+  <div class="reviews-slider-wrapper">
+    <button class="slider-arrow slider-prev" aria-label="Попередній відгук">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="reviews-track" id="reviewsTrack">
+      
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Анна" class="review-avatar">
+          <div>
+            <div class="review-name">Анна К.</div>
+            <div class="review-date">15 січня 2025</div>
+          </div>
         </div>
-      </div>
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
-      <p class="review-text">Замовляла кухню і залишилася неймовірно задоволеною! Майстер взяв на себе абсолютно все: від заміру до фінального прибирання. Робота виконана бездоганно, якісно та точно в строк. Обов'язково буду рекомендувати знайомим.</p>
-    </div>
-    <div class="review-card">
-      <div class="review-header">
-        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Сергій" class="review-avatar">
-        <div>
-          <div class="review-name">Сергій М.</div>
-          <div class="review-date">3 березня 2025</div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
         </div>
+        <p class="review-text">Замовляла кухню і залишилася неймовірно задоволеною! Майстер взяв на себе абсолютно все: від заміру до фінального прибирання. Робота виконана бездоганно, якісно та точно в строк.</p>
       </div>
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-      </div>
-      <p class="review-text">Облаштовували гардеробну кімнату. Майстер уважно вислухав усі наші побажання та дав цінні поради щодо вибору матеріалів. Якість на найвищому рівні, а ціна абсолютно виправдана. Звертаємося вже вдруге!</p>
-    </div>
-    <div class="review-card">
-      <div class="review-header">
-        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Наталія" class="review-avatar">
-        <div>
-          <div class="review-name">Наталія В.</div>
-          <div class="review-date">28 квітня 2025</div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80" alt="Сергій" class="review-avatar">
+          <div>
+            <div class="review-name">Сергій М.</div>
+            <div class="review-date">3 березня 2025</div>
+          </div>
         </div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="review-text">Облаштовували гардеробну кімнату. Майстер уважно вислухав усі наші побажання та дав цінні поради щодо вибору матеріалів. Якість на найвищому рівні, а ціна абсолютно виправдана. Звертаємося вже вдруге!</p>
       </div>
-      <div class="review-stars">
-        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="Наталія" class="review-avatar">
+          <div>
+            <div class="review-name">Наталія В.</div>
+            <div class="review-date">28 квітня 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="review-text">Дуже задоволена співпрацею. Шафа-купе служить вже понад півроку — механізми працюють ідеально, жодних нарікань. Майстер дуже ввічливий, детально пояснив усі технічні нюанси.</p>
       </div>
-      <p class="review-text">Дуже задоволена співпрацею. Шафа-купе служить вже понад півроку — механізми працюють ідеально, жодних нарікань. Майстер дуже ввічливий, детально пояснив усі технічні нюанси. Рекомендую від щирого серця!</p>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80" alt="Максим" class="review-avatar">
+          <div>
+            <div class="review-name">Максим Т.</div>
+            <div class="review-date">10 травня 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="review-text">Чудовий майстер. Замовляли тумбу під телевізор і шафу в передпокій. Зробив усе на совість, фурнітура працює м'яко. Рекомендую всім, хто шукає надійного виконавця.</p>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&q=80" alt="Олена" class="review-avatar">
+          <div>
+            <div class="review-name">Олена Д.</div>
+            <div class="review-date">22 червня 2025</div>
+          </div>
+        </div>
+        <div class="review-stars">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+        <p class="review-text">Замовляли меблі на балкон. Все зроблено швидко, дуже акуратно і саме так, як ми планували. Величезне дякую майстру за роботу!</p>
+      </div>
+
     </div>
+
+    <button class="slider-arrow slider-next" aria-label="Наступний відгук">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
   </div>
 </section>
 
@@ -230,7 +274,7 @@
               <a href="#" class="messenger-btn msg-whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
               <a href="#" class="messenger-btn msg-telegram"><i class="fa-brands fa-telegram"></i></a>
               <a href="#" class="messenger-btn msg-viber"><i class="fa-brands fa-viber"></i></a>
-              <a href="#" class="messenger-btn msg-facebook"><i class="fa-brands fa-facebook"></i></a>
+              <a href="https://www.facebook.com/oleksandr.zgurs.kij.688522" class="messenger-btn msg-facebook"><i class="fa-brands fa-facebook"></i></a>
               <a href="#" class="messenger-btn msg-instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
           </div>
@@ -259,6 +303,7 @@
 </footer>
 
 <script>
+  
   // Анімація появи елементів (Fade-in)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -296,7 +341,24 @@
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
     }
-  });
+  })
+  // Логіка для слайдера відгуків
+  const track = document.getElementById('reviewsTrack');
+  const btnPrev = document.querySelector('.slider-prev');
+  const btnNext = document.querySelector('.slider-next');
+
+  if(track && btnPrev && btnNext) {
+    btnNext.addEventListener('click', () => {
+      // Отримуємо ширину однієї картки + відступ (gap) 24px
+      const cardWidth = track.querySelector('.review-card').offsetWidth + 24;
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    });
+
+    btnPrev.addEventListener('click', () => {
+      const cardWidth = track.querySelector('.review-card').offsetWidth + 24;
+      track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+    });
+  };
 </script>
 </body>
 </html>
