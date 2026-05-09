@@ -6,6 +6,7 @@
 <title>Портфоліо — Меблі на замовлення</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="portfolio-page">
@@ -37,68 +38,93 @@
 </div>
 
 <section class="gallery">
-  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
-    <img src="image/kitchen1.jpg" alt="Кухня" class="portfolio-thumb">
+  <div class="portfolio-item" data-category="kitchen">
+    <a href="image/kitchen1.jpg" data-lightbox="kitchen" data-title="Класична біла кухня">
+      <img src="image/kitchen1.jpg" alt="Кухня" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Класична біла кухня з дерев'яною стільницею</div>
   </div>
   
-  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
-    <img src="image/kitchen2.jpg" alt="Кухня" class="portfolio-thumb">
+  <div class="portfolio-item" data-category="kitchen">
+    <a href="image/kitchen2.jpg" data-lightbox="kitchen" data-title="Оливкова кухня">
+      <img src="image/kitchen2.jpg" alt="Кухня" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Оливкова кухня з акцентною плиткою</div>
   </div>
-  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
-    <img src="image/kitchen3.jpg" alt="Кухня" class="portfolio-thumb">
+  
+  <div class="portfolio-item" data-category="kitchen">
+    <a href="image/kitchen3.jpg" data-lightbox="Bright minimalist kitchen" data-title="Світла кухня">
+      <img src="image/kitchen3.jpg" alt="Кухня" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Світла мінімалістична кухня</div>
   </div>
-  <div class="portfolio-item" data-category="kitchen" onclick="openLightbox(this)">
-    <img src="image/kitchen4.png" alt="Кухня" class="portfolio-thumb">
+  
+  <div class="portfolio-item" data-category="kitchen">
+    <a href="image/kitchen4.png" data-lightbox="kitchen" data-title="Сучасна кухня">
+      <img src="image/kitchen4.png" alt="Кухня" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Сучасна двоколірна кухня з прихованими ручками</div>
   </div>
 
-  <div class="portfolio-item" data-category="wardrobe" onclick="openLightbox(this)">
-    <img src="image/wardrobe1.jpg" alt="Шафа" class="portfolio-thumb">
+  <div class="portfolio-item" data-category="wardrobe">
+    <a href="image/wardrobe1.jpg" data-lightbox="wardrobe" data-title="Темна шафа">
+      <img src="image/wardrobe1.jpg" alt="Шафа" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Темна шафа з фактурою дерева та відкритими бічними полицями</div>
   </div>
-  <div class="portfolio-item" data-category="wardrobe" onclick="openLightbox(this)">
-    <img src="image/wardrobe2.jpg" alt="Шафа" class="portfolio-thumb">
+  
+  <div class="portfolio-item" data-category="wardrobe">
+    <a href="image/wardrobe2.jpg" data-lightbox="wardrobe" data-title="Біла шафа">
+      <img src="image/wardrobe2.jpg" alt="Шафа" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Біла шафа-купе з декорованим склом та підвісною тумбою з дзеркалом</div>
   </div>
 
-  <div class="portfolio-item" data-category="closet" onclick="openLightbox(this)">
-    <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=600&q=80" alt="Гардеробна" class="portfolio-thumb">
+  <div class="portfolio-item" data-category="closet">
+    <a href="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=1200&q=80" data-lightbox="closet" data-title="Гардеробна">
+      <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=600&q=80" alt="Гардеробна" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Функціональна гардеробна</div>
   </div>
 
-  <div class="portfolio-item" data-category="other" onclick="openLightbox(this)">
-    <img src="image/other1.jpg" alt="тумба під телевізор" class="portfolio-thumb">
+  <div class="portfolio-item" data-category="other">
+    <a href="image/other1.jpg" data-lightbox="other" data-title="Тумба під телевізор">
+      <img src="image/other1.jpg" alt="тумба під телевізор" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Мінімалістична підвісна тумба під телевізор із нижньою підсвіткою</div>
   </div>
 
-  <div class="portfolio-item" data-category="other" onclick="openLightbox(this)">
-    <img src="image/other2.jpg" alt="Ванна тумба" class="portfolio-thumb">
+  <div class="portfolio-item" data-category="other">
+    <a href="image/other2.jpg" data-lightbox="other" data-title="Тумба у ванну">
+      <img src="image/other2.jpg" alt="Ванна тумба" class="portfolio-thumb">
+    </a>
     <div class="portfolio-caption">Підвісна тумба у ванну з фактурою дерева та заокругленим фасадом</div>
   </div>
 </section>
-
-<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
-  <span class="lightbox-close">&times;</span>
-  <img class="lightbox-content" id="lightbox-img" src="" alt="Перегляд">
-</div>
 
 <footer>
   <p>© 2025 Корпусні меблі на замовлення · Приватний майстер · Всі права захищені</p>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
 <script>
+  lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true,
+    'albumLabel': "Фото %1 з %2",
+    'fadeDuration': 300,
+    'disableScrolling': true
+  });
+
   // Логіка фільтрації
   const filterBtns = document.querySelectorAll('.filter-btn');
   const portfolioItems = document.querySelectorAll('.portfolio-item');
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Видаляємо клас active у всіх кнопок
       filterBtns.forEach(button => button.classList.remove('active'));
-      // Додаємо клас active натиснутій кнопці
       btn.classList.add('active');
 
       const filterValue = btn.getAttribute('data-filter');
@@ -111,31 +137,6 @@
         }
       });
     });
-  });
-
-  // Логіка Lightbox (галереї)
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightbox-img');
-
-  function openLightbox(element) {
-    const imgSrc = element.querySelector('img').src;
-    lightboxImg.src = imgSrc;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden'; 
-  }
-
-  function closeLightbox(event) {
-    if (event.target === lightbox || event.target.className === 'lightbox-close') {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = ''; 
-    }
-  }
-
-  document.addEventListener('keydown', function(event) {
-    if (event.key === "Escape" && lightbox.classList.contains('active')) {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
   });
 </script>
 </body>
